@@ -94,7 +94,7 @@ class Fun(commands.Cog):
 			user = userMessage.content.lower()
 
 			if user == "quit":
-				ctx.send(f"Game ended.\nYour score: {score[1]}\nMy score: {score[0]}")
+				await ctx.send(f"Game ended.\nYour score: {score[1]}\nMy score: {score[0]}")
 				break
 			else:
 				outcome = random.choice(["win", "draw", "lose"])
