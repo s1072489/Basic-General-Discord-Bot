@@ -11,7 +11,7 @@ class Other(commands.Cog):
 	@commands.command()
 	async def info(self, ctx):
 		embed = discord.Embed(colour=discord.Colour.blue())
-		embed.add_field(name="Hi, I'm Gigabit", value=f'[Invite]() me to your server! Also, check out our [website]()!')
+		embed.add_field(name="Hi, I'm a discord bot!", value=f'You can invite me to your server!')
 		await ctx.channel.send(embed=embed)
 		await ctx.message.delete()
 

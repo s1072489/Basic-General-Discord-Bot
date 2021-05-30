@@ -1,7 +1,7 @@
 import os
 from discord.ext import commands
 
-TOKEN = "I'M NOT TELLING YOU MY TOKEN :)"
+TOKEN = "I'm not telling you my token :)"
 client = commands.Bot(command_prefix="+", case_insensitive=True)
 # client.remove_command('help')
 
