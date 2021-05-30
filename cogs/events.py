@@ -20,7 +20,7 @@ class Events(commands.Cog):
 			embed.add_field(
 				name='The following error occured while trying running this command',
 				value='CommandNotFound', inline=False)
-			embed.set_footer(text=f'Please try again | {ctx.message.author.name} | If you belive this is a error, please DM HelloWorld#7091')
+			embed.set_footer(text=f'Please try again | {ctx.message.author.name} | If you belive this is a error, please DM ______#____')
 			await ctx.channel.send(embed=embed, delete_after=10)
 
 		elif isinstance(error, commands.MissingPermissions):
@@ -29,7 +29,7 @@ class Events(commands.Cog):
 							value='MissingRequiredPermissions', inline=False)
 			embed.add_field(name='You do not have the required permission to use this command',
 							value='For the required permissions of each command, use `+help`', inline=False)
-			embed.set_footer(text=f'| {ctx.message.author.name} | If you belive this is a error, please DM HelloWorld#7091')
+			embed.set_footer(text=f'| {ctx.message.author.name} | If you belive this is a error, please DM ______#____')
 			await ctx.channel.send(embed=embed, delete_after=10)
 
 		elif isinstance(error, commands.MissingRequiredArgument):
@@ -38,7 +38,7 @@ class Events(commands.Cog):
 							value='MissingRequiredArgument', inline=False)
 			embed.add_field(name='Please redo the command with all the parameters',
 							value='`eg.` `+embed [title] [text]`', inline=False)
-			embed.set_footer(text=f'| {ctx.message.author.name} | If you belive this is a error, please DM HelloWorld#7091')
+			embed.set_footer(text=f'| {ctx.message.author.name} | If you belive this is a error, please DM ______#____')
 			await ctx.channel.send(embed=embed, delete_after=10)
 
 		else:
