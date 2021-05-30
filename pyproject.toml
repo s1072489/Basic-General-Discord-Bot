@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "repl_python3_Basic-General-Discord-Bot"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+name = "Basic-General-Discord-Bot"
+version = "0.2.0"
+description = "A basic discord bot I made for fun in python3"
+authors = ["Brandon Zhou <brandonzhou@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
