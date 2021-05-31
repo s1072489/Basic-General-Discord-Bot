@@ -14,7 +14,10 @@ class Events(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_command_error(self, ctx, error):
-		await ctx.message.delete()
+		try:
+			await ctx.message.delete()
+		except:
+			pass
 		if isinstance(error, commands.CommandNotFound):
 			embed = discord.Embed(colour=discord.Colour.red())
 			embed.add_field(

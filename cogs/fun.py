@@ -94,7 +94,11 @@ class Fun(commands.Cog):
 			user = userMessage.content.lower()
 
 			if user == "quit":
-				await ctx.send(f"Game ended.\nYour score: {score[1]}\nMy score: {score[0]}")
+				embed = discord.Embed(colour=colour)
+				embed.set_author(name="Game ended.")
+				embed.add_field(name=f"Your score:", value=f"`{score[1]}`", inline=False)
+				embed.add_field(name=f"My score:", value=f"`{score[0]}`", inline=False)
+				await ctx.channel.send(embed=embed)
 				break
 			else:
 				outcome = random.choice(["win", "draw", "lose"])
@@ -114,10 +118,10 @@ class Fun(commands.Cog):
 
 				embed = discord.Embed(colour=colour)
 				embed.set_author(name=text)
-				embed.add_field(name=f"Your choice:", value=f"{user.capitalize()}", inline=False)
-				embed.add_field(name=f"My choice:", value=comp.capitalize(), inline=False)
+				embed.add_field(name=f"Your choice:", value=f"`{user.capitalize()}`", inline=False)
+				embed.add_field(name=f"My choice:", value=f"`{comp.capitalize()}`", inline=False)
 				embed.set_footer(text=f"You: {score[1]} - Gigabyte: {score[0]}")
-				await ctx.channel.send(embed=embed, delete_after=15)
+				await ctx.channel.send(embed=embed, delete_after=5)
 
 def setup(client):
 	client.add_cog(Fun(client))
