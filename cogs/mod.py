@@ -19,7 +19,7 @@ class Mod(commands.Cog):
 		except:
 			pass
 		try:
-			await ctx.guild.kick(reason= reason)
+			await ctx.guild.kick(reason= f"{ctx.message.author.name} : {reason}")
 			embed = discord.Embed(colour=discord.Colour.green())
 			embed.set_author(name="Kick member")
 			embed.add_field(name=f"{user} has been successfully kicked from this server", value="They can still join back with another invite")
@@ -30,7 +30,7 @@ class Mod(commands.Cog):
 			embed.set_author(name="Kick member")
 			embed.add_field(name=f'{user} was not able to be kicked from this server', value="This is most likely because Gigabyte's top role is the same or is lower than the target.")
 			embed.set_footer(text=f'{user} was unsuccessfully kicked by {ctx.message.author.name} for {reason}')
-			await ctx.channel.send(embed=embed)
+			await ctx.channel.send(embed=embed, delete_after=5)
 
 
 	@commands.command()
@@ -46,7 +46,7 @@ class Mod(commands.Cog):
 			pass
 
 		try:
-			await ctx.guild.ban(user=user, reason= reason)
+			await ctx.guild.ban(user=user, reason= f"{ctx.message.author.name} : {reason}")
 			embed = discord.Embed(
 				colour=discord.Colour.green()
 			)
@@ -59,7 +59,7 @@ class Mod(commands.Cog):
 			embed.set_author(name="Ban member")
 			embed.add_field(name=f'{user} was not able to be banned from this server', value="This is most likely because Gigabyte's top role is the same or is lower than the target.")
 			embed.set_footer(text=f'{user} was unsuccessfully banned by {ctx.message.author.name} for {reason}')
-			await ctx.channel.send(embed=embed)
+			await ctx.channel.send(embed=embed, delete_after=5)
 
 
 	@commands.command()
@@ -76,7 +76,7 @@ class Mod(commands.Cog):
 			embed.set_author(name='Unban member')
 			embed.add_field(name=f'{user} has been successfully unbanned from this server', value='They can now join back with an invite')
 			embed.set_footer(text=f'{user} was unbanned by {ctx.message.author.name}')
-			await ctx.channel.send(embed=embed)
+			await ctx.channel.send(embed=embed, delete_after=5)
 
 
 	@commands.command(aliases=['clear', 'delete'])
@@ -88,7 +88,7 @@ class Mod(commands.Cog):
 		embed.set_author(name='Purge messages')
 		embed.add_field(name=f'{amount} messages have been successfully deleted', value='No way of getting them back now')
 		embed.set_footer(text=f'{amount} messages deleted by {ctx.message.author.name}')
-		await ctx.channel.send(embed=embed)
+		await ctx.channel.send(embed=embed, delete_after=5)
 
 
 	@commands.command(aliases=['make_role'])
@@ -97,7 +97,7 @@ class Mod(commands.Cog):
 		await ctx.message.delete()
 		guild = ctx.guild
 		await guild.create_role(name=name)
-		await ctx.send(f'Role `{name}` has been created')
+		await ctx.send(f'Role `{name}` has been created',  delete_after=5)
 
 
 	@commands.command(aliases=['give_role'])
@@ -112,7 +112,7 @@ class Mod(commands.Cog):
 		except:
 			embed = discord.embed(colour=discord.Colour.red())
 			embed.add_field(name=f"Role `{role}` was unable to be added to {user.mention}", value=f"This may be because thia role does not exist, or I do not have the permissions to add it.")
-			await ctx.send(embed=embed)
+			await ctx.send(embed=embed, delete_after=5)
 
 
 	@commands.command(aliases=['take_role'])
@@ -127,7 +127,7 @@ class Mod(commands.Cog):
 		except:
 			embed = discord.embed(colour=discord.Colour.red())
 			embed.add_field(name=f"Role `{role}` was unable to be removed from {user.mention}", value=f"This may be because thia role does not exist, or I do not have the permissions to remove it.")
-			await ctx.send(embed=embed)
+			await ctx.send(embed=embed, delete_after=5)
 
 	@commands.command()
 	@commands.guild_only()
@@ -137,7 +137,7 @@ class Mod(commands.Cog):
 		message = f"Changed **{member.name}'s** nickname to **{name}**"
 		if name is None:
 			message = f"Reset `{member.name}'s` nickname"
-		await ctx.send(message)
+		await ctx.send(message, delete_after=5)
 
 def setup(client):
 	client.add_cog(Mod(client))
