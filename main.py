@@ -6,10 +6,6 @@ client = commands.Bot(command_prefix="+", case_insensitive=True)
 # client.remove_command('help')
 
 
-servers = client.guilds
-for server in servers:
-	print(server.name)
-
 for filename in os.listdir("./cogs"):
 	if filename.endswith(".py"):
 		client.load_extension(f"cogs.{filename[:-3]}")
