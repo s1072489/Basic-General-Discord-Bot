@@ -1,7 +1,6 @@
 import discord
 import random
 import asyncio
-import discord_components
 from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType, component
 from discord.ext import commands
 
@@ -101,9 +100,9 @@ class Fun(commands.Cog):
 
 			if user == "quit":
 				embed = discord.Embed(colour=colour)
-				embed.set_author(name="Game ended.")
-				embed.add_field(name=f"Your score:", value=f"`{score[1]}`", inline=True)
-				embed.add_field(name=f"My score:", value=f"`{score[0]}`", inline=True)
+				embed.set_author(name=f"Game ended with {ctx.message.author.name}.")
+				embed.add_field(name="Your score:", value=f"`{score[1]}`", inline=True)
+				embed.add_field(name="My score:", value=f"`{score[0]}`", inline=True)
 				await ctx.send(embed=embed)
 				break
 			else:
@@ -124,9 +123,9 @@ class Fun(commands.Cog):
 
 				embed = discord.Embed(colour=colour)
 				embed.set_author(name=text)
-				embed.add_field(name=f"Your choice:", value=f"`{user.capitalize()}`", inline=True)
-				embed.add_field(name=f"My choice:", value=f"`{comp.capitalize()}`", inline=True)
-				embed.set_footer(text=f"You: {score[1]} - Gigabyte: {score[0]}")
+				embed.add_field(name="Your choice:", value=f"`{user.capitalize()}`", inline=True)
+				embed.add_field(name="My choice:", value=f"`{comp.capitalize()}`", inline=True)
+				embed.set_footer(text=f"{ctx.message.author.name}: {score[1]} - Gigabyte: {score[0]}")
 				await ctx.send(embed=embed)
 
 def setup(client):
