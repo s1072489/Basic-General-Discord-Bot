@@ -1,6 +1,7 @@
 import discord
 import random
 import asyncio
+from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType, component
 from discord.ext import commands
 
 
@@ -8,6 +9,7 @@ class Fun(commands.Cog):
 
 	def __init__(self, client):
 		self.client = client
+		self.ddb = DiscordComponents(self.client)
 
 	@commands.command(aliases=["hello", "greet"])
 	async def hi(self, ctx):
@@ -79,26 +81,29 @@ class Fun(commands.Cog):
 		}
 
 		while True:
-			await ctx.send(f"Rock paper scissors? (rock/paper/scissors/quit)", delete_after=15)
+			botmsg = await ctx.channel.send(f"Rock paper scissors? {ctx.message.author}", components=[[Button(style=ButtonStyle.blue, label="Rock"), Button(style=ButtonStyle.green, label="Paper"), Button(style=ButtonStyle.grey, label="Scissors"), Button(style=ButtonStyle.red, label="Quit")]], delete_after=15)
 
-			def check(msg):
-				return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower() in game
-			
+			def check(m):
+				return m.author == ctx.author
 
 			try:
-				userMessage = await self.client.wait_for('message', check=check, timeout=15)
+				res = await self.client.wait_for("button_click", check=check, timeout=15)
 			except asyncio.TimeoutError:
-				await ctx.send("Timeout!")
-				break
-
-			user = userMessage.content.lower()
+				await ctx.send("Timeout!", delete_after=5)
+				res.component.label = "quit"
+						
+			user = res.component.label.lower()
+			try:
+				await botmsg.delete()
+			except:
+				pass
 
 			if user == "quit":
 				embed = discord.Embed(colour=colour)
 				embed.set_author(name="Game ended.")
-				embed.add_field(name=f"Your score:", value=f"`{score[1]}`", inline=False)
-				embed.add_field(name=f"My score:", value=f"`{score[0]}`", inline=False)
-				await ctx.channel.send(embed=embed)
+				embed.add_field(name=f"Your score:", value=f"`{score[1]}`", inline=True)
+				embed.add_field(name=f"My score:", value=f"`{score[0]}`", inline=True)
+				await ctx.send(embed=embed)
 				break
 			else:
 				outcome = random.choice(["win", "draw", "lose"])
@@ -118,10 +123,10 @@ class Fun(commands.Cog):
 
 				embed = discord.Embed(colour=colour)
 				embed.set_author(name=text)
-				embed.add_field(name=f"Your choice:", value=f"`{user.capitalize()}`", inline=False)
-				embed.add_field(name=f"My choice:", value=f"`{comp.capitalize()}`", inline=False)
+				embed.add_field(name=f"Your choice:", value=f"`{user.capitalize()}`", inline=True)
+				embed.add_field(name=f"My choice:", value=f"`{comp.capitalize()}`", inline=True)
 				embed.set_footer(text=f"You: {score[1]} - Gigabyte: {score[0]}")
-				await ctx.channel.send(embed=embed, delete_after=5)
+				await ctx.send(embed=embed)
 
 def setup(client):
 	client.add_cog(Fun(client))
