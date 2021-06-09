@@ -7,6 +7,7 @@ authors = ["Brandon Zhou <brandonzhou@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 discord = "^1.0.1"
+discord-components = "^0.5.3"
 
 [tool.poetry.dev-dependencies]
 

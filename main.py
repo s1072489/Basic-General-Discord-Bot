@@ -1,4 +1,5 @@
 import os
+import discord_components
 from discord.ext import commands
 from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType, component
 

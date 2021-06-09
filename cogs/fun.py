@@ -1,6 +1,7 @@
 import discord
 import random
 import asyncio
+import discord_components
 from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType, component
 from discord.ext import commands
 
