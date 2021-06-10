@@ -9,7 +9,6 @@ class Fun(commands.Cog):
 
 	def __init__(self, client):
 		self.client = client
-		self.ddb = DiscordComponents(self.client)
 
 	@commands.command(aliases=["hello", "greet"])
 	async def hi(self, ctx):

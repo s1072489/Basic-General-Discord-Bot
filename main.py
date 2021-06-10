@@ -6,7 +6,7 @@ from discord_components import DiscordComponents, Button, ButtonStyle, Interacti
 TOKEN = os.environ['TOKEN']
 client = commands.Bot(command_prefix="+", case_insensitive=True)
 # client.remove_command('help')
-ddb = DiscordComponents(client)
+DiscordComponents(client)
 
 
 for filename in os.listdir("./cogs"):
