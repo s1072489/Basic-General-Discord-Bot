@@ -2,3 +2,5 @@
 # Basic-General Discord Bot
 A random discord bot I made  
 *Token not included*
+
+## This will not get updated regularly 
