@@ -98,7 +98,8 @@ class Fun(commands.Cog):
 				pass
 
 			if user == "quit":
-				embed = discord.Embed(colour=colour)
+				if
+				embed = discord.Embed()
 				embed.set_author(name=f"Game ended with {ctx.message.author.name}.")
 				embed.add_field(name="Your score:", value=f"`{score[1]}`", inline=True)
 				embed.add_field(name="My score:", value=f"`{score[0]}`", inline=True)
