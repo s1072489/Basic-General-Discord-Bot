@@ -19,7 +19,6 @@ class Other(commands.Cog):
 	@commands.command(aliases=["say"])
 	async def embed(self, ctx, title, *, arg):
 		await ctx.message.delete()
-		title = title.replace("_", " ")
 		embed = discord.Embed(colour=discord.Colour.blurple())
 		embed.add_field(name=f'{title}', value=f"{arg}", inline=False)
 		embed.set_footer(text=f'Embed by {ctx.message.author.name}')
